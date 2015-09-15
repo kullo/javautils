@@ -1,0 +1,20 @@
+apply plugin: 'java'
+
+task wrapper(type: org.gradle.api.tasks.wrapper.Wrapper) {
+    gradleVersion = '2.4'
+}
+
+sourceSets {
+    utilsTests {
+        java {
+        }
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:3.8'
+}

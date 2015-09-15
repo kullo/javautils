@@ -4,13 +4,6 @@ task wrapper(type: org.gradle.api.tasks.wrapper.Wrapper) {
     gradleVersion = '2.4'
 }
 
-sourceSets {
-    utilsTests {
-        java {
-        }
-    }
-}
-
 repositories {
     jcenter()
 }

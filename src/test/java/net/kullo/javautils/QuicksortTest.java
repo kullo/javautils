@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by simon on 14.09.15.
  */
-public class SortTest extends TestCase {
+public class QuicksortTest extends TestCase {
     final Comparator<Integer> INT_COMPARATOR = new Comparator<Integer>() {
         @Override
         public int compare(Integer lhs, Integer rhs) {
@@ -22,21 +22,21 @@ public class SortTest extends TestCase {
 
     public void testSortEmpty() throws Exception {
         List<Integer> empty = new ArrayList<>();
-        Sort.Quicksort.sort(empty, INT_COMPARATOR);
+        Quicksort.sort(empty, INT_COMPARATOR);
         assertEquals(empty.size(), 0);
         assertEquals(empty, new ArrayList<Integer>());
     }
 
     public void testSortSingle() throws Exception {
         List<Integer> single = new ArrayList<>(Arrays.asList(1));
-        Sort.Quicksort.sort(single, INT_COMPARATOR);
+        Quicksort.sort(single, INT_COMPARATOR);
         assertEquals(single.size(), 1);
         assertEquals(single.get(0), new Integer(1));
     }
 
     public void testSortSorted() throws Exception {
         List<Integer> single = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-        Sort.Quicksort.sort(single, INT_COMPARATOR);
+        Quicksort.sort(single, INT_COMPARATOR);
         assertEquals(single.size(), 5);
         assertEquals(single.get(0), new Integer(1));
         assertEquals(single.get(1), new Integer(2));
@@ -47,7 +47,7 @@ public class SortTest extends TestCase {
 
     public void testSortReverse() throws Exception {
         List<Integer> single = new ArrayList<>(Arrays.asList(5, 4, 3, 2, 1));
-        Sort.Quicksort.sort(single, INT_COMPARATOR);
+        Quicksort.sort(single, INT_COMPARATOR);
         assertEquals(single.size(), 5);
         assertEquals(single.get(0), new Integer(1));
         assertEquals(single.get(1), new Integer(2));
@@ -58,7 +58,7 @@ public class SortTest extends TestCase {
 
     public void testSortRandom() throws Exception {
         List<Integer> single = new ArrayList<>(Arrays.asList(4, 2, 5, 1, 3));
-        Sort.Quicksort.sort(single, INT_COMPARATOR);
+        Quicksort.sort(single, INT_COMPARATOR);
         assertEquals(single.size(), 5);
         assertEquals(single.get(0), new Integer(1));
         assertEquals(single.get(1), new Integer(2));
@@ -70,7 +70,7 @@ public class SortTest extends TestCase {
 
     public void testSortEquals() throws Exception {
         List<Integer> single = new ArrayList<>(Arrays.asList(4, 4, 4, 4, 4));
-        Sort.Quicksort.sort(single, INT_COMPARATOR);
+        Quicksort.sort(single, INT_COMPARATOR);
         assertEquals(single.size(), 5);
         assertEquals(single.get(0), new Integer(4));
         assertEquals(single.get(1), new Integer(4));
@@ -81,7 +81,7 @@ public class SortTest extends TestCase {
 
     public void testSortLong() throws Exception {
         List<Integer> single = new ArrayList<>(Arrays.asList(4, 2, 5, 0, 12, 11, 7, 8, 10, 12));
-        Sort.Quicksort.sort(single, INT_COMPARATOR);
+        Quicksort.sort(single, INT_COMPARATOR);
         assertEquals(single.size(), 10);
         assertEquals(single.get(0), new Integer(0));
         assertEquals(single.get(1), new Integer(2));
@@ -97,7 +97,7 @@ public class SortTest extends TestCase {
 
     public void testSortNegativeShort() throws Exception {
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 0, -1));
-        Sort.Quicksort.sort(list, INT_COMPARATOR);
+        Quicksort.sort(list, INT_COMPARATOR);
         assertEquals(list.size(), 3);
         assertEquals(list.get(0), new Integer(-1));
         assertEquals(list.get(1), new Integer(0));
@@ -106,7 +106,7 @@ public class SortTest extends TestCase {
 
     public void testSortNegativeLong() throws Exception {
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 0, -1, -9, -150, 150, 9));
-        Sort.Quicksort.sort(list, INT_COMPARATOR);
+        Quicksort.sort(list, INT_COMPARATOR);
         assertEquals(list.size(), 7);
         assertEquals(list.get(0), new Integer(-150));
         assertEquals(list.get(1), new Integer(-9));

@@ -5,6 +5,25 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Quicksort {
+    public interface PivotStrategy {
+        <G> void apply(List<G> list, int left, int right);
+    }
+
+    static public class TrivialPivotStrategy implements PivotStrategy {
+        @Override
+        public <G> void apply(List<G> list, int left, int right) {
+            // do nothing
+        }
+    }
+
+    static public class MiddleElementPivotStrategy implements PivotStrategy {
+        @Override
+        public <G> void apply(List<G> list, int left, int right) {
+            int pivotPosition = left + (right-left)/2;
+            Collections.swap(list, pivotPosition, right);
+        }
+    }
+
     private Quicksort() {}
 
     public static <G> void sort(List<G> list, Comparator<G> comparator) {
@@ -13,6 +32,8 @@ public class Quicksort {
 
     public static <G> void sort(List<G> list, Comparator<G> comparator, int left, int right) {
         if (left < right) {
+            PivotStrategy pivotStrategy = new MiddleElementPivotStrategy();
+            pivotStrategy.apply(list, left, right);
             int separator = separate(list, comparator, left, right);
             sort(list, comparator, left, separator - 1);
             sort(list, comparator, separator + 1, right);

@@ -8,7 +8,7 @@ Android.
 
 ## Contents
 
-### Sorting
+**Sorting**
 
 Those sorting algorithms can be used when Java's TimSort is too intelligent for
 your application, e.g. when your data changes during a `Collection.sort()` run.
@@ -19,14 +19,14 @@ All sorting classes make use of custom
  * QuickSort
  * InsertionSort
 
-### Assertions
+**Assertions**
 
 Since the `assert` keyword is not relyable on Android, this is a drop-in replacement
 for assertions that are executed in both debug and release builds.
 
  * RuntimeAssertion
 
-### Encoding
+**Encoding**
 
 A base64 encoder/decoder that is as strict as possible, i.e. throws an exception
 when an invalid character is found during decoding instead of ignoring it
@@ -38,14 +38,14 @@ when an invalid character is found during decoding instead of ignoring it
 
  * Test driven development
  * CI planned
- * Code is documentation
+ * Code is the documentation
  * APIs change without warning until someone tells me he is using this
  * Contributions welcome
 
-## Requiements
+## Requirements
 
  * Java 7 (code SHOULD run on Java 8 but MUST run with Java 7)
 
 ## License
 
-MIT.
+MIT, see [LICENSE](LICENSE).

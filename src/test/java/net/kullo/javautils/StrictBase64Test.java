@@ -304,4 +304,74 @@ public class StrictBase64Test extends TestCase {
             assertEquals(true, didThrow);
         }
     }
+
+    public void testDecodeIllegalCharacterWhenWhitespaceAllowed() throws Exception {
+        {
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode(" Zg==", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(false, didThrow);
+        }
+        // Space
+        {
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode(", Zg==", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode("Z ,g==", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode("Zg =?=", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode("Zg= =~", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode("Zg== #", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            // Correct length (8) before remong whitespace
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode("Zg== #  ", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            // Correct length (8) after removing whitespace
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode(" 1234567? ", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+        {
+            // Correct length (8) after removing whitespace
+            boolean didThrow = false;
+            try {
+                StrictBase64.decode(" 123,5678 ", true);
+            } catch (StrictBase64.DecodingException e) { didThrow = true; }
+            assertEquals(true, didThrow);
+        }
+    }
 }

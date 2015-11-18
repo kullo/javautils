@@ -2,7 +2,7 @@ javautils
 =========
 
 javautils is a collection of helper classes for common tasks. It is made for
-Android but has explicitely no Android dependency. So the classes can be userd
+Android but has explicitly no Android dependency. So the classes can be used
 for every other Java project but the APIs might be similar to the ones used on
 Android.
 
@@ -21,7 +21,7 @@ All sorting classes make use of custom
 
 **Assertions**
 
-Since the `assert` keyword is not relyable on Android, this is a drop-in replacement
+Since the `assert` keyword is not reliable on Android, this is a drop-in replacement
 for assertions that are executed in both debug and release builds.
 
  * RuntimeAssertion

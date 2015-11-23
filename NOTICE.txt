@@ -1,0 +1,3 @@
+javautils has been contributed to by the following people (in alphabetic order):
+
+Simon Warta (Kullo GmbH)

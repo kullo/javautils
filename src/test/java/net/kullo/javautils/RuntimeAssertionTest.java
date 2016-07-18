@@ -48,4 +48,19 @@ public class RuntimeAssertionTest extends TestCase {
             assertEquals(true, didThrowAssertionError);
         }
     }
+
+    public void testRequireWithMessage() throws Exception {
+        boolean didThrow = false;
+        String assertionText = "";
+
+        try {
+            RuntimeAssertion.require(1 == 2, "one must be two");
+        } catch (Error e) {
+            didThrow = true;
+            assertionText = e.getMessage();
+        }
+
+        assertEquals(true, didThrow);
+        assertEquals("one must be two", assertionText);
+    }
 }

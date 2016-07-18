@@ -32,19 +32,19 @@ public class RuntimeAssertionTest extends TestCase {
         }
 
         {
-            boolean didThrow = false;
+            boolean didThrowSomething = false;
             boolean didThrowAssertionError = false;
 
             try {
                 RuntimeAssertion.require(2 == 8);
             } catch (AssertionError e) {
-                didThrow = true;
+                didThrowSomething = true;
                 didThrowAssertionError = true;
-            } catch (Exception e) {
-                didThrow = true;
+            } catch (Throwable e) {
+                didThrowSomething = true;
             }
 
-            assertEquals(true, didThrow);
+            assertEquals(true, didThrowSomething);
             assertEquals(true, didThrowAssertionError);
         }
     }

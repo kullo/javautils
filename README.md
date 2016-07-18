@@ -1,6 +1,8 @@
 javautils
 =========
 
+[![Build Status](https://travis-ci.org/kullo/javautils.svg?branch=master)](https://travis-ci.org/kullo/javautils)
+
 javautils is a collection of helper classes for common tasks. It is made for
 Android but has explicitly no Android dependency. So the classes can be used
 for every other Java project but the APIs might be similar to the ones used on

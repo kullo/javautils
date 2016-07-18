@@ -19,8 +19,20 @@ public class RuntimeAssertion {
     private RuntimeAssertion() {}
 
     public static void require(boolean expression) {
+        require(expression, "");
+    }
+
+    public static void require(boolean expression, final String message) {
         if (!expression) {
-            throw new AssertionError(expression);
+            throw new AssertionError(message);
         }
+    }
+
+    public static void fail() {
+        fail("");
+    }
+
+    public static void fail(final String message) {
+        throw new AssertionError(message);
     }
 }

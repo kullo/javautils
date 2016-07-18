@@ -32,20 +32,81 @@ public class RuntimeAssertionTest extends TestCase {
         }
 
         {
-            boolean didThrow = false;
+            boolean didThrowSomething = false;
             boolean didThrowAssertionError = false;
 
             try {
                 RuntimeAssertion.require(2 == 8);
             } catch (AssertionError e) {
-                didThrow = true;
+                didThrowSomething = true;
                 didThrowAssertionError = true;
-            } catch (Exception e) {
+            } catch (Throwable e) {
+                didThrowSomething = true;
+            }
+
+            assertEquals(true, didThrowSomething);
+            assertEquals(true, didThrowAssertionError);
+        }
+    }
+
+    public void testRequireWithMessage() throws Exception {
+        boolean didThrow = false;
+        String assertionText = "";
+
+        try {
+            RuntimeAssertion.require(1 == 2, "one must be two");
+        } catch (Error e) {
+            didThrow = true;
+            assertionText = e.getMessage();
+        }
+
+        assertEquals(true, didThrow);
+        assertEquals("one must be two", assertionText);
+    }
+
+    public void testFail() throws Exception {
+        {
+            boolean didThrow = false;
+
+            try {
+                RuntimeAssertion.fail();
+            } catch (Error e) {
                 didThrow = true;
             }
 
             assertEquals(true, didThrow);
+        }
+
+        {
+            boolean didThrowSomething = false;
+            boolean didThrowAssertionError = false;
+
+            try {
+                RuntimeAssertion.fail();
+            } catch (AssertionError e) {
+                didThrowSomething = true;
+                didThrowAssertionError = true;
+            } catch (Throwable e) {
+                didThrowSomething = true;
+            }
+
+            assertEquals(true, didThrowSomething);
             assertEquals(true, didThrowAssertionError);
         }
+    }
+
+    public void testFailWithMessage() throws Exception {
+        boolean didThrow = false;
+        String assertionText = "";
+
+        try {
+            RuntimeAssertion.fail("dead code reached");
+        } catch (Error e) {
+            didThrow = true;
+            assertionText = e.getMessage();
+        }
+
+        assertEquals(true, didThrow);
+        assertEquals("dead code reached", assertionText);
     }
 }

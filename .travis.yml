@@ -7,14 +7,11 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk8
-  - openjdk7
-
-# work around https://github.com/travis-ci/travis-ci/issues/5669
-before_install:
-  - cat /etc/hosts # optionally check the content *before*
-  - sudo hostname "$(hostname | cut -c1-63)"
-  - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
-  - cat /etc/hosts # optionally check the content *after*
+  # OpenJDK 7 is currently broken
+  #   https://github.com/travis-ci/travis-ci/issues/5227
+  #   https://github.com/travis-ci/travis-ci/issues/5669
+  # Since we don't exspect different behavior from other JDKs, just skip the test.
+  # - openjdk7
 
 notifications:
   email: false

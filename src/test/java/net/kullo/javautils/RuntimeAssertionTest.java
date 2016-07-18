@@ -63,4 +63,50 @@ public class RuntimeAssertionTest extends TestCase {
         assertEquals(true, didThrow);
         assertEquals("one must be two", assertionText);
     }
+
+    public void testFail() throws Exception {
+        {
+            boolean didThrow = false;
+
+            try {
+                RuntimeAssertion.fail();
+            } catch (Error e) {
+                didThrow = true;
+            }
+
+            assertEquals(true, didThrow);
+        }
+
+        {
+            boolean didThrowSomething = false;
+            boolean didThrowAssertionError = false;
+
+            try {
+                RuntimeAssertion.fail();
+            } catch (AssertionError e) {
+                didThrowSomething = true;
+                didThrowAssertionError = true;
+            } catch (Throwable e) {
+                didThrowSomething = true;
+            }
+
+            assertEquals(true, didThrowSomething);
+            assertEquals(true, didThrowAssertionError);
+        }
+    }
+
+    public void testFailWithMessage() throws Exception {
+        boolean didThrow = false;
+        String assertionText = "";
+
+        try {
+            RuntimeAssertion.fail("dead code reached");
+        } catch (Error e) {
+            didThrow = true;
+            assertionText = e.getMessage();
+        }
+
+        assertEquals(true, didThrow);
+        assertEquals("dead code reached", assertionText);
+    }
 }

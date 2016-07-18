@@ -27,4 +27,12 @@ public class RuntimeAssertion {
             throw new AssertionError(message);
         }
     }
+
+    public static void fail() {
+        fail("");
+    }
+
+    public static void fail(final String message) {
+        throw new AssertionError(message);
+    }
 }

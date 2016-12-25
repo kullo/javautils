@@ -15,8 +15,10 @@ hs_err_pid*
 # Gradle / IntelliJ IDEA Module (e.g. Android Studio)
 .gradle/
 .idea/
+local.properties
+*.iml
+
+# Gradle wrapper
 gradle/
 gradlew
 gradlew.bat
-local.properties
-*.iml

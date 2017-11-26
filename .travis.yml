@@ -9,5 +9,10 @@ jdk:
   - openjdk8
   - openjdk7
 
+# whitelist branches to avoid testing feature branches twice (as branch and as pull request)
+branches:
+  only:
+    - master
+
 notifications:
   email: false

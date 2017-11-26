@@ -7,11 +7,7 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk8
-  # OpenJDK 7 is currently broken
-  #   https://github.com/travis-ci/travis-ci/issues/5227
-  #   https://github.com/travis-ci/travis-ci/issues/5669
-  # Since we don't exspect different behavior from other JDKs, just skip the test.
-  # - openjdk7
+  - openjdk7
 
 notifications:
   email: false
